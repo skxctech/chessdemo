@@ -1,0 +1,14 @@
+<div class="board">
+    <div *ngFor="let row of board" class="row">
+        <div 
+            *ngFor="let block of row" 
+            class="column block"
+            [class.active]="block.active"
+            (dragenter)="dragEnter(e, block)"
+            (dragleave)="dragLeave(e, block)"
+            (dragover)="dragOver(e, block)"
+        >
+            <app-piece *ngIf="block.piece" [data]="block.piece"></app-piece>
+        </div>
+    </div>
+</div>
