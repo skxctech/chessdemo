@@ -7,7 +7,7 @@ export class Piece implements IPiece {
     player: number;
     control: IControl;
     move(data: IMoveData): boolean {
-        return false;
+        return true;
     };
     constructor(data) {
         this.name = data.name;

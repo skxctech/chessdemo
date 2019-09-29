@@ -22,9 +22,32 @@ export class Pawn extends Piece {
 
     move(data: IMoveData): boolean {
 
-        // piece specific check
-        console.log('data coming in piece move', data);
+        // pawns can't jump
         if (data.blocked && !this.control.jump) {
+            return false;
+        }
+
+        // permit conquer only on 1 travelLimit XY
+        if (data.conquering) {
+            let diff = data.coords.sx - data.coords.dx;
+            if (diff < 0) { diff *= -1; }
+            if (diff !== 1) {
+                return false;
+            }
+        }
+
+        // block negative Y movement
+        if (data.coords.dy - data.coords.sy < 0) {
+            return false;
+        }
+
+        // set direction limit
+        if (data.coords.sx !== data.coords.dx && !data.conquering) {
+            return false;
+        }
+
+        // set travel limit
+        if (data.coords.dy - data.coords.sy > 1) {
             return false;
         }
 
