@@ -1,10 +1,11 @@
-import { Pawn } from './pawn';
+import { Piece } from './piece';
+
 
 export class Block {
-    Pawn: Pawn;
+    piece: Piece;
     x: number;
     y: number;
-    active: boolean = false;
+    active = false;
     constructor(x, y) {
         this.x = x;
         this.y = y;

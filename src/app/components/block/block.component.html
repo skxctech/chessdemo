@@ -1,0 +1,14 @@
+<div 
+    class="block"
+    [class.active]="data.active"
+    (dragstart)="dragStart($event, data)"
+    (dragenter)="dragEnter($event, data)"
+    (dragover)="dragOver($event)"
+    (dragleave)="dragLeave($event, data)"
+    (drop)="drop($event, data)"
+>
+    <app-piece
+        *ngIf="data.piece" 
+        [data]="data.piece"
+    ></app-piece>
+</div>
