@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Block } from '../models/block';
 import { Pawn } from '../models/pawn';
-import { isObject } from 'util';
+import { Rook } from '../models/rook';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +29,7 @@ export class BoardService {
       block.piece = new Pawn({player: 0});
     });
 
+    this.data[5][5].piece = new Rook({player: 0});
     this.data[5][3].piece = new Pawn({player: 1});
     this.data[5][1].piece = new Pawn({player: 0});
   }
@@ -66,14 +67,14 @@ export class BoardService {
 
     // there has to be a better way
     if (coords.sy - coords.dy > 0) {
-      for (let i = coords.sy - 1; i > coords.dy; i--) { processXY(i, 'subtract') }
+      for (let i = coords.sy - 1; i > coords.dy; i--) { processXY(i, 'subtract'); }
     } else if (coords.sy - coords.dy < 0) {
-      for (let i = coords.sy + 1; i < coords.dy; i++) { processXY(i, 'add') }
+      for (let i = coords.sy + 1; i < coords.dy; i++) { processXY(i, 'add'); }
     } else if (coords.sy === coords.dy) {
       const min = Math.min(coords.sx, coords.dx);
       const max = Math.max(coords.sx, coords.dx);
       for (let i = min; i < max - 1; i++) {
-        blocks.push(this.data[mirror[coords.sy]][i]);
+        blocks.push(this.data[mirror[coords.sy - 2]][i]);
       }
     }
 

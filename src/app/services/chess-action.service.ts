@@ -21,6 +21,11 @@ export class ChessActionService {
 
   ruleCheck() {
 
+    if (this.destination.piece && this.destination.piece.player === 0) {
+      console.error('own piece present');
+      return false;
+    }
+
     const coords = {
       sx: this.source.x,
       sy: this.source.y,
@@ -29,7 +34,8 @@ export class ChessActionService {
     };
 
     const pathingCheck = this.basePathing(coords);
-    if (pathingCheck.normal || pathingCheck.diagonal || pathingCheck.rook) {
+
+    if (pathingCheck.normal || pathingCheck.diagonal || pathingCheck.knight) {
       return this.source.piece.move({
         coords,
         blocked: this.board.blockCheck(coords),
@@ -46,7 +52,7 @@ export class ChessActionService {
     const pattern = {
       normal: false,
       diagonal: false,
-      rook: false
+      knight: false
     };
 
     // move X or Y
@@ -66,7 +72,7 @@ export class ChessActionService {
     }
     // move L (knight path)
     if ((c1 === 1 && c2 === 2) || (c2 === 1 && c1 === 2)) {
-      pattern.rook = true;
+      pattern.knight = true;
     }
 
     return pattern;
