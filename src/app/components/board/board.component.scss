@@ -16,7 +16,7 @@
     display: flex;
     flex-direction: row;
     &:nth-child(odd) {
-        .block {
+        .column {
             &:nth-child(odd) {
                 background: #fff;
                 color: #000;
@@ -28,7 +28,7 @@
         }
     }
     &:nth-child(even) {
-        .block {
+        .column {
             &:nth-child(even) {
                 background: #fff;
                 color: #000;
@@ -41,14 +41,11 @@
     }
 }
 
-.block {
+.column {
     width: 10vh;
     height: 10vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    &.active {
-        background: gray !important;
-    }
 }

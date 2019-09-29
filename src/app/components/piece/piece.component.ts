@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Piece } from 'src/app/interfaces/piece';
+import { Block } from 'src/app/models/block';
 
 @Component({
   selector: 'app-piece',
@@ -7,15 +9,11 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class PieceComponent implements OnInit {
 
-  @Input() data: any;
+  @Input() data: Piece;
 
   constructor() { }
 
   ngOnInit() {
-  }
-
-  onDragStart(e) {
-    console.log(e);
   }
 
 }
