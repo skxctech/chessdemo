@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Piece } from 'src/app/interfaces/piece';
-import { Block } from 'src/app/models/block';
+import { Piece } from 'src/app/models/piece';
+
 
 @Component({
   selector: 'app-piece',
