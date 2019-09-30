@@ -4,14 +4,24 @@
     cursor: pointer;
 }
 
+.piece {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .player0 {
     width: 100%; height: 100%;
     box-sizing: border-box;
-    border: 2px solid red;
+    color: #fff;
 }
 
 .player1 {
     width: 100%; height: 100%;
     box-sizing: border-box;
-    border: 2px solid blue;
+    color: #000;
+}
+
+.icon {
+    font-size: 32px;
 }
