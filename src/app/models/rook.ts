@@ -28,7 +28,7 @@ export class Rook extends Piece {
         }
 
         // no XY movement
-        if (data.coords.dx !== data.coords.sx 
+        if (data.coords.dx !== data.coords.sx
             && data.coords.dy !== data.coords.sy) {
             return false;
         }
