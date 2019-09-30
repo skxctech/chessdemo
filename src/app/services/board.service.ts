@@ -30,6 +30,15 @@ export class BoardService {
       block.piece = new Pawn({player: 1});
     });
 
+    this.data[0][7].piece = new Rook({player: 1});
+    this.data[0][6].piece = new Knight({player: 1});
+    this.data[0][5].piece = new Bishop({player: 1});
+    this.data[0][4].piece = new King({player: 1});
+    this.data[0][3].piece = new Queen({player: 1});
+    this.data[0][2].piece = new Bishop({player: 1});
+    this.data[0][1].piece = new Knight({player: 1});
+    this.data[0][0].piece = new Rook({player: 1});
+
     this.data[6].forEach(block => {
       block.piece = new Pawn({player: 0});
     });
@@ -45,7 +54,7 @@ export class BoardService {
 
   }
 
-  // TODO refactor this
+  // TODO refactor
   blockCheck(coords): boolean {
 
     const blocks = [];
