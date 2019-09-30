@@ -52,7 +52,6 @@ export class Piece implements IPiece {
 
         }
 
-
         return true;
     }
 }

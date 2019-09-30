@@ -34,7 +34,7 @@ export class ChessActionService {
     };
 
     const pathing = this.basePathing(coords);
-    console.log(pathing);
+
     if (pathing.normal || pathing.diagonal || pathing.knight) {
       return this.source.piece.move({
         pathing,

@@ -21,16 +21,8 @@ export class King extends Piece {
 
     move(data: IMoveData): boolean {
 
-        // no jumping
-        if (data.blocked && !this.control.jump) {
-            return false;
-        }
+        // TODO check / check-mate logic
+        return super.move(data);
 
-        // set travel limit
-        if (data.coords.dy - data.coords.sy > 1) {
-            return false;
-        }
-
-        return true;
     }
 }
