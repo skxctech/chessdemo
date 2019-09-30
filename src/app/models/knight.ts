@@ -21,10 +21,6 @@ export class Knight extends Piece {
 
     move(data: IMoveData): boolean {
 
-        if (!data.pathing.knight) {
-            return false;
-        }
-
-        return true;
+        return super.move(data);
     }
 }

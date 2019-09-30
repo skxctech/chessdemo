@@ -21,11 +21,6 @@ export class Queen extends Piece {
 
     move(data: IMoveData): boolean {
 
-        // no jumping
-        if (data.blocked && !this.control.jump) {
-            return false;
-        }
-
-        return true;
+        return super.move(data);
     }
 }

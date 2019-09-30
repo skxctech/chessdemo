@@ -9,7 +9,7 @@ export class Pawn extends Piece {
             name: 'Pawn',
             icon: 'pawn',
             control: {
-                direction: [Direction.Y],
+                direction: [Direction.Y, Direction.XY],
                 negativeDirection: false,
                 jump: false,
                 travelLimit: 1,
@@ -20,20 +20,18 @@ export class Pawn extends Piece {
 
     move(data: IMoveData): boolean {
 
-        // permit conquer only on 1 travelLimit XY
-        if (data.conquering) {
-            let diff = data.coords.sx - data.coords.dx;
-            if (diff < 0) { diff *= -1; }
-            if (diff !== 1) {
-                return false;
-            } else {
-                return true;
-            }
-        }
-
         if (super.move(data)) {
+
             // block negative Y movement
             if (data.coords.dy - data.coords.sy < 0) {
+                return false;
+            }
+
+            // permit XY movement only when conquering
+            if (data.pathing.diagonal && !data.conquering) {
+                return false;
+            }
+            if (data.conquering && data.pathing.normal) {
                 return false;
             }
 

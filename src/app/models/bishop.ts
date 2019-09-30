@@ -21,16 +21,6 @@ export class Bishop extends Piece {
 
     move(data: IMoveData): boolean {
 
-        // no jumping
-        if (data.blocked && !this.control.jump) {
-            return false;
-        }
-
-        // XY movement only
-        if (!data.pathing.diagonal) {
-            return false;
-        }
-
-        return true;
+       return super.move(data);
     }
 }

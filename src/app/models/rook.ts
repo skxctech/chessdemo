@@ -21,17 +21,7 @@ export class Rook extends Piece {
 
     move(data: IMoveData): boolean {
 
-        // no jumping
-        if (data.blocked && !this.control.jump) {
-            return false;
-        }
+        return super.move(data);
 
-        // no XY movement
-        if (data.coords.dx !== data.coords.sx
-            && data.coords.dy !== data.coords.sy) {
-            return false;
-        }
-
-        return true;
     }
 }
