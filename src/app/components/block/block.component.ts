@@ -21,7 +21,11 @@ export class BlockComponent implements OnInit {
   }
 
   dragStart(e, block: Block) {
-    this.action.source = block;
+    if (block.piece.player === 0) {
+      this.action.source = block;
+    } else {
+      e.preventDefault();
+    }
   }
 
   dragEnter(e, block) {
