@@ -33,10 +33,11 @@ export class ChessActionService {
       dy: this.destination.y
     };
 
-    const pathingCheck = this.basePathing(coords);
-
-    if (pathingCheck.normal || pathingCheck.diagonal || pathingCheck.knight) {
+    const pathing = this.basePathing(coords);
+    console.log(pathing);
+    if (pathing.normal || pathing.diagonal || pathing.knight) {
       return this.source.piece.move({
+        pathing,
         coords,
         blocked: this.board.blockCheck(coords),
         conquering: this.destination.piece ? true : false
@@ -70,6 +71,7 @@ export class ChessActionService {
     if (c1 === c2) {
       pattern.diagonal = true;
     }
+
     // move L (knight path)
     if ((c1 === 1 && c2 === 2) || (c2 === 1 && c1 === 2)) {
       pattern.knight = true;

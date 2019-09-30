@@ -1,6 +1,11 @@
 import { IControl } from './control';
 
 export interface IMoveData {
+    pathing: {
+        normal: boolean;
+        diagonal: boolean;
+        knight: boolean;
+    },
     coords: {
         sx: number;
         sy: number;
