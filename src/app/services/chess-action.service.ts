@@ -19,7 +19,7 @@ export class ChessActionService {
     }
   }
 
-  ruleCheck() {
+  private ruleCheck() {
 
     if (this.destination.piece && this.destination.piece.player === 0) {
       console.error('own piece present');
@@ -49,7 +49,7 @@ export class ChessActionService {
 
   }
 
-  basePathing(coords) {
+  private basePathing(coords) {
     const pattern = {
       normal: false,
       diagonal: false,
