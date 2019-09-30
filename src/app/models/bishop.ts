@@ -1,0 +1,37 @@
+
+import { Direction, Conquer } from '../interfaces/control';
+import { Piece } from './piece';
+import { IMoveData } from '../interfaces/piece';
+
+export class Bishop extends Piece {
+    constructor(data) {
+        super({
+            name: 'Bishop',
+            icon: 'bishop',
+            control: {
+                direction: [Direction.XY],
+                conquer: [Conquer.DG],
+                negativeDirection: true,
+                jump: false,
+                travelLimit: 0,
+                upgradeable: false
+            },
+            player: data.player
+        });
+    }
+
+    move(data: IMoveData): boolean {
+
+        // no jumping
+        if (data.blocked && !this.control.jump) {
+            return false;
+        }
+
+        // XY movement only
+        if (!data.pathing.diagonal) {
+            return false;
+        }
+
+        return true;
+    }
+}

@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import { Block } from '../models/block';
 import { Pawn } from '../models/pawn';
 import { Rook } from '../models/rook';
+import { Knight } from '../models/knight';
+import { Bishop } from '../models/bishop';
+import { Queen } from '../models/queen';
+import { King } from '../models/king';
 
 @Injectable({
   providedIn: 'root'
@@ -25,13 +29,19 @@ export class BoardService {
     this.data[1].forEach(block => {
       block.piece = new Pawn({player: 1});
     });
-      // this.data[6].forEach(block => {
-      //   block.piece = new Pawn({player: 0});
-      // });
 
-    this.data[5][5].piece = new Rook({player: 0});
-    this.data[5][3].piece = new Pawn({player: 1});
-    this.data[5][1].piece = new Pawn({player: 0});
+    this.data[6].forEach(block => {
+      block.piece = new Pawn({player: 0});
+    });
+
+    this.data[7][7].piece = new Rook({player: 0});
+    this.data[7][6].piece = new Knight({player: 0});
+    this.data[7][5].piece = new Bishop({player: 0});
+    this.data[7][4].piece = new King({player: 0});
+    this.data[7][3].piece = new Queen({player: 0});
+    this.data[7][2].piece = new Bishop({player: 0});
+    this.data[7][1].piece = new Knight({player: 0});
+    this.data[7][0].piece = new Rook({player: 0});
   }
 
   // TODO refactor this
