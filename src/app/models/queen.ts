@@ -1,5 +1,5 @@
 
-import { Direction, Conquer } from '../interfaces/control';
+import { Direction } from '../interfaces/control';
 import { Piece } from './piece';
 import { IMoveData } from '../interfaces/piece';
 
@@ -10,7 +10,6 @@ export class Queen extends Piece {
             icon: 'queen',
             control: {
                 direction: [Direction.XY, Direction.X, Direction.Y],
-                conquer: [Conquer.ALL],
                 negativeDirection: true,
                 jump: false,
                 travelLimit: 0,

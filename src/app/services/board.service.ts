@@ -42,6 +42,7 @@ export class BoardService {
     this.data[7][2].piece = new Bishop({player: 0});
     this.data[7][1].piece = new Knight({player: 0});
     this.data[7][0].piece = new Rook({player: 0});
+
   }
 
   // TODO refactor this

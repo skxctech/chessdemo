@@ -5,7 +5,7 @@ export interface IMoveData {
         normal: boolean;
         diagonal: boolean;
         knight: boolean;
-    },
+    };
     coords: {
         sx: number;
         sy: number;
@@ -21,4 +21,5 @@ export interface IPiece {
     icon: string;
     player: number;
     control: IControl;
+    move(data: IMoveData): boolean;
 }
