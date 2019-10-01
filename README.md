@@ -1,27 +1,18 @@
 # Chess
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.0.
+A showcase prototype of a "extendable" chess implementation in Angular
 
-## Development server
+Current features:
+* board generation, set by default at 8x8
+    * structure setup is a 2D array
+* pathing implementation
+    * checks for X, Y, XY, Knight movement patterns
+    * blocked path detection, coupled with a jump parameter
+* class-based chess pieces implementation
+    * general movement patterns are checked on the Piece class
+    * each piece can implement specific restrictions - i.e. Pawns can't move backward
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Planned features, maybe:
+* check / checkmate detection
+* reverse logic for player 1 events
+* match instance + players implementation through a basic db platform, maybe Firebase
