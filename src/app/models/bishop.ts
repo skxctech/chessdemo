@@ -22,5 +22,6 @@ export class Bishop extends Piece {
     move(data: IMoveData): boolean {
 
        return super.move(data);
+
     }
 }

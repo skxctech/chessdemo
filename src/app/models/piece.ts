@@ -16,7 +16,7 @@ export class Piece implements IPiece {
     move(data: IMoveData): boolean {
 
         // pathing match check
-        // TODO messy, refactor
+        // TODO refactor
         if (data.pathing.diagonal && !this.control.direction.includes(Direction.XY)) {
             return false;
         }
@@ -53,5 +53,6 @@ export class Piece implements IPiece {
         }
 
         return true;
+
     }
 }

@@ -8,10 +8,6 @@ import { BlockComponent } from './components/block/block.component';
 import { ChessActionService } from './services/chess-action.service';
 import { BoardService } from './services/board.service';
 
-import { AngularFireModule } from '@angular/fire';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { environment } from '../environments/environment';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,9 +16,7 @@ import { environment } from '../environments/environment';
     BlockComponent
   ],
   imports: [
-    BrowserModule,
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    BrowserModule
   ],
   providers: [ChessActionService, BoardService],
   bootstrap: [AppComponent]

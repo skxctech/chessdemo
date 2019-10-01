@@ -6,7 +6,6 @@ import { Knight } from '../models/knight';
 import { Bishop } from '../models/bishop';
 import { Queen } from '../models/queen';
 import { King } from '../models/king';
-import { Test } from '../models/test';
 
 @Injectable({
   providedIn: 'root'
@@ -50,10 +49,6 @@ export class BoardService {
     this.data[7][2].piece = new Bishop({player: 0});
     this.data[7][1].piece = new Knight({player: 0});
     this.data[7][0].piece = new Rook({player: 0});
-
-    // test piece
-    this.data[2][2].piece = new Test({player: 0});
-    this.data[4][4].piece = new Test({player: 0});
 
   }
 
@@ -112,7 +107,7 @@ export class BoardService {
     }
 
     // easy debug
-    blocks.forEach(block => block.active = true);
+    // blocks.forEach(block => block.active = true);
 
     return blocks.some(block => block.piece);
 
