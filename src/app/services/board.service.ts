@@ -109,6 +109,7 @@ export class BoardService {
     // easy debug
     // blocks.forEach(block => block.active = true);
 
+    // return the blocks on the path between source and destination
     return blocks.some(block => block.piece);
 
   }
