@@ -22,6 +22,6 @@ export class Knight extends Piece {
     move(data: IMoveData): boolean {
 
         return super.move(data);
-        
+
     }
 }
