@@ -6,6 +6,7 @@ import { Knight } from '../models/knight';
 import { Bishop } from '../models/bishop';
 import { Queen } from '../models/queen';
 import { King } from '../models/king';
+import { Test } from '../models/test';
 
 @Injectable({
   providedIn: 'root'
@@ -16,11 +17,9 @@ export class BoardService {
   public data = [];
 
   constructor() {
-    let y = 8;
-    this.data = Array.from({length: this.boardSize}, () => {
-      y--;
-      return Array.from({length: this.boardSize}, (_, x) => {
-        return new Block(x + 1, y + 1);
+    this.data = Array.from({length: this.boardSize}, (_, y) => {
+      return Array.from({length: this.boardSize}, (__, x) => {
+        return new Block(x, y);
       });
     });
   }
@@ -52,6 +51,10 @@ export class BoardService {
     this.data[7][1].piece = new Knight({player: 0});
     this.data[7][0].piece = new Rook({player: 0});
 
+    // test piece
+    this.data[2][2].piece = new Test({player: 0});
+    this.data[4][4].piece = new Test({player: 0});
+
   }
 
   // TODO refactor
@@ -59,30 +62,21 @@ export class BoardService {
 
     const blocks = [];
 
-    const mirror = Array.from({length: this.boardSize}, (_, i) => i).reverse();
-
     // Y is the index used for grid intersection
     const processXY = (y, op) => {
-
-      // adjust for Y selection
-      y--;
-
-      // mirror the array for index selection;
-      const mirrorY = mirror[y];
 
       let x;
 
       if (coords.sx !== coords.dx) {
 
-        // adjust for XY selection
-        y++;
-
         // if block was also moved on X,
         // determine the coords from the Y diff
         let xdiff = y - coords.sy;
+
         if (op === 'add') {
           xdiff *= -1;
         }
+
         if (coords.sx - coords.dx > 0) {
           x = coords.sx + xdiff;
         } else {
@@ -92,7 +86,7 @@ export class BoardService {
         x = coords.sx;
       }
 
-      blocks.push(this.data[mirrorY][x - 1]);
+      blocks.push(this.data[y][x]);
 
     };
 
@@ -110,15 +104,15 @@ export class BoardService {
 
       const min = Math.min(coords.sx, coords.dx);
       const max = Math.max(coords.sx, coords.dx);
-      for (let i = min; i < max - 1; i++) {
-        const block = this.data[mirror[coords.sy - 1]];
+      for (let i = min + 1; i < max; i++) {
+        const block = this.data[coords.sy];
         blocks.push(block[i]);
       }
 
     }
 
     // easy debug
-    // blocks.forEach(block => block.active = true);
+    blocks.forEach(block => block.active = true);
 
     return blocks.some(block => block.piece);
 

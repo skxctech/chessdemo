@@ -3,16 +3,16 @@ import { Direction } from '../interfaces/control';
 import { Piece } from './piece';
 import { IMoveData } from '../interfaces/piece';
 
-export class Pawn extends Piece {
+export class Test extends Piece {
     constructor(data) {
         super({
-            name: 'Pawn',
+            name: 'Test',
             icon: 'pawn',
             control: {
                 direction: [Direction.Y, Direction.XY],
                 negativeDirection: false,
                 jump: false,
-                travelLimit: 1,
+                travelLimit: 0,
             },
             player: data.player
         });
@@ -21,19 +21,6 @@ export class Pawn extends Piece {
     move(data: IMoveData): boolean {
 
         if (super.move(data)) {
-
-            // block negative Y movement
-            if (data.coords.sy - data.coords.dy < 0) {
-                return false;
-            }
-
-            // permit XY movement only when conquering
-            if (data.pathing.diagonal && !data.conquering) {
-                return false;
-            }
-            if (data.conquering && data.pathing.normal) {
-                return false;
-            }
 
             return true;
 
